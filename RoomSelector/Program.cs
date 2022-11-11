@@ -36,7 +36,7 @@ bool CanSelectRoom(int roomNumber)
         return true;
     }
 
-    if (roomNumber < 1 || roomNumber > roomArray.Length)
+    if (roomNumber < 0 || roomNumber > roomArray.Length)
     {
         throw new ArgumentOutOfRangeException();
     }
