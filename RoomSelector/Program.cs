@@ -7,6 +7,8 @@ var roomSelectedArray = new bool[16]
 //make a 2d array of each room and their neighbors
 var roomArray = new int[16][];
 
+//my sort of adjacency matrix
+//normally you have 1 or 0 for if it's the neighbor, but I figured why not just have indexes
 roomArray[0] = new int[2] { 1, 4 };
 roomArray[1] = new int[3] { 0, 2, 5 };
 roomArray[2] = new int[3] { 1, 3, 6 };
@@ -27,7 +29,6 @@ roomArray[15] = new int[2] { 11, 14 };
 
 //does simpl+ have resizeable arrays?
 var visitedNodes = new List<int>();
-bool foundZero = false;
 
 bool CanSelectRoom(int roomNumber)
 {
@@ -59,6 +60,7 @@ bool CanSelectRoom(int roomNumber)
         }
         else
         {
+            //recursion
             var stopit = CanSelectRoom(roomArray[roomNumber][i]);
 
             if (stopit)
@@ -72,6 +74,7 @@ bool CanSelectRoom(int roomNumber)
         }
     }
 
+    //all it's neighbors are visited and/or are off
     return false;
 }
 
